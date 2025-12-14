@@ -1,0 +1,362 @@
+/* 微信公众号素材上传助手 - 内容脚本样式 */
+
+/* 悬浮上传按钮 */
+.wechat-upload-hover-btn {
+  position: absolute;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: #07c160;
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.wechat-upload-hover-btn:hover {
+  background: #06ad56;
+  transform: scale(1.05);
+}
+
+.wechat-upload-hover-btn.wechat-upload-loading {
+  background: #999;
+  pointer-events: none;
+}
+
+.wechat-spinner {
+  animation: wechat-spin 1s linear infinite;
+}
+
+@keyframes wechat-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 批量选择工具栏 */
+.wechat-upload-batch-toolbar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.wechat-batch-info {
+  font-size: 14px;
+  color: #333;
+}
+
+.wechat-batch-info strong {
+  color: #07c160;
+  font-size: 16px;
+}
+
+.wechat-batch-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.wechat-batch-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.wechat-batch-upload {
+  background: #07c160;
+  color: white;
+}
+
+.wechat-batch-upload:hover {
+  background: #06ad56;
+}
+
+.wechat-batch-upload:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.wechat-batch-cancel {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.wechat-batch-cancel:hover {
+  background: #e0e0e0;
+}
+
+/* 图片选择覆盖层 */
+.wechat-select-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999998;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  transition: background 0.2s;
+  box-sizing: border-box;
+}
+
+.wechat-select-overlay:hover {
+  background: rgba(7, 193, 96, 0.1);
+}
+
+.wechat-select-overlay.wechat-checked {
+  background: rgba(7, 193, 96, 0.2);
+}
+
+.wechat-select-checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #07c160;
+  border-radius: 4px;
+  background: white;
+  transition: all 0.2s;
+}
+
+.wechat-select-overlay.wechat-checked .wechat-select-checkbox {
+  background: #07c160;
+  position: relative;
+}
+
+.wechat-select-overlay.wechat-checked .wechat-select-checkbox::after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* 选中状态的图片 */
+.wechat-selectable {
+  cursor: pointer;
+}
+
+.wechat-selected {
+  outline: 3px solid #07c160;
+  outline-offset: 2px;
+}
+
+/* 通知提示 */
+.wechat-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  animation: wechat-slidein 0.3s ease;
+}
+
+@keyframes wechat-slidein {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.wechat-notification-fadeout {
+  animation: wechat-fadeout 0.3s ease forwards;
+}
+
+@keyframes wechat-fadeout {
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.wechat-notification-success {
+  border-left: 4px solid #07c160;
+}
+
+.wechat-notification-error {
+  border-left: 4px solid #e64340;
+}
+
+.wechat-notification-warning {
+  border-left: 4px solid #ff9800;
+}
+
+.wechat-notification-info {
+  border-left: 4px solid #1890ff;
+}
+
+.wechat-notification-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.wechat-notification-close:hover {
+  color: #333;
+}
+
+/* 账号选择弹窗 */
+.wechat-account-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999999;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.wechat-account-modal-content {
+  background: white;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: wechat-modal-in 0.2s ease;
+}
+
+@keyframes wechat-modal-in {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.wechat-account-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.wechat-account-modal-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.wechat-account-modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #999;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.wechat-account-modal-close:hover {
+  color: #333;
+}
+
+.wechat-account-list {
+  padding: 8px 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.wechat-account-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.wechat-account-option:hover {
+  background: #f5f5f5;
+}
+
+.wechat-account-option.is-default {
+  background: #f0fff5;
+}
+
+.wechat-account-option-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wechat-account-option-name {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+.wechat-account-option-badge {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: #07c160;
+  color: white;
+  border-radius: 3px;
+}
+
+.wechat-account-option-arrow {
+  color: #ccc;
+}
+
+.wechat-account-modal-footer {
+  padding: 12px 20px;
+  border-top: 1px solid #eee;
+}
+
+.wechat-remember-choice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #666;
+  cursor: pointer;
+}
+
+.wechat-remember-choice input {
+  margin: 0;
+}

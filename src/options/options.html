@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>微信公众号素材上传助手 - 设置</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <h1>微信公众号配置</h1>
+
+    <!-- 公众号列表 -->
+    <div class="section">
+      <div class="section-header">
+        <h2>公众号列表</h2>
+        <button id="addAccountBtn" class="btn btn-small btn-primary">+ 添加公众号</button>
+      </div>
+      <div id="accountList" class="account-list">
+        <p class="empty-text">暂未添加公众号，点击上方按钮添加</p>
+      </div>
+    </div>
+
+    <!-- 添加/编辑公众号弹窗 -->
+    <div id="accountModal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modalTitle">添加公众号</h3>
+          <button class="modal-close" id="closeModalBtn">&times;</button>
+        </div>
+        <form id="accountForm">
+          <input type="hidden" id="accountId">
+          <div class="form-group">
+            <label for="accountName">公众号名称</label>
+            <input type="text" id="accountName" placeholder="例如：我的公众号" required>
+            <p class="hint">方便识别的名称</p>
+          </div>
+          <div class="form-group">
+            <label for="appId">AppID</label>
+            <input type="text" id="appId" placeholder="请输入公众号 AppID" required>
+            <p class="hint">在公众号后台 - 开发 - 基本配置中获取</p>
+          </div>
+          <div class="form-group">
+            <label for="appSecret">AppSecret</label>
+            <input type="password" id="appSecret" placeholder="请输入公众号 AppSecret" required>
+            <p class="hint">注意保密，不要泄露给他人</p>
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="isDefault">
+              设为默认公众号
+            </label>
+          </div>
+          <div class="button-group">
+            <button type="button" id="testBtn" class="btn btn-secondary">测试连接</button>
+            <button type="submit" class="btn btn-primary">保存</button>
+          </div>
+        </form>
+        <div id="modalMessage" class="message hidden"></div>
+      </div>
+    </div>
+
+    <!-- 通用设置 -->
+    <div class="section">
+      <h2>通用设置</h2>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" id="showHoverButton" checked>
+          显示悬浮上传按钮
+        </label>
+      </div>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" id="askBeforeUpload" checked>
+          上传前询问选择公众号
+        </label>
+        <p class="hint">关闭后将直接上传到默认公众号</p>
+      </div>
+      <button id="saveGeneralBtn" class="btn btn-primary">保存通用设置</button>
+    </div>
+
+    <div id="message" class="message hidden"></div>
+
+    <div class="info-section">
+      <h2>使用说明</h2>
+      <ol>
+        <li>添加一个或多个公众号配置</li>
+        <li>设置一个默认公众号（可选）</li>
+        <li>浏览网页时，右键图片选择"上传到公众号素材库"</li>
+        <li>在弹出的选择框中选择目标公众号</li>
+      </ol>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
